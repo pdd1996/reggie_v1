@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    # 运行环境
+    active: test
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+  datasource:
+    url: jdbc:mysql://${reggie.mysql.ip}:${reggie.mysql.port}/${reggie.mysql.db}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: ${reggie.mysql.username}
+    password: ${reggie.mysql.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: ${reggie.server.port}
