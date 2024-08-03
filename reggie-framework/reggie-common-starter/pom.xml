@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.reggie</groupId>
-        <artifactId>reggie_v1</artifactId>
+        <artifactId>reggie-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <description>用于处理服务端业务逻辑，引入common模块</description>
-    <artifactId>reggie-server</artifactId>
+
+    <artifactId>reggie-common-starter</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -19,9 +19,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.reggie</groupId>
-            <artifactId>reggie-common-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
         </dependency>
     </dependencies>
+
 </project>

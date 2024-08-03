@@ -10,6 +10,11 @@
     </parent>
 
     <artifactId>reggie-framework</artifactId>
+    <description>父工程: 用于管理公共模块</description>
+    <packaging>pom</packaging>
+    <modules>
+        <module>reggie-common-starter</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
