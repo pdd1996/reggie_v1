@@ -1,7 +1,11 @@
 package com.reggie.employee.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import cn.dev33.satoken.util.SaResult;
+import com.reggie.employee.domain.entity.Employee;
+import com.reggie.employee.service.IEmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
@@ -13,9 +17,15 @@ import org.springframework.stereotype.Controller;
  * @author paddy
  * @since 2024-08-04
  */
-@Controller
+@RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-
+    @Autowired
+    private IEmployeeService employeeService;
+    @PostMapping("/login")
+    public SaResult login(@RequestBody Employee employee) {
+        System.out.println("login" + employee);
+        return employeeService.login(employee);
+    }
 }
 
