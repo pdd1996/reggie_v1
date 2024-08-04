@@ -2,6 +2,8 @@ package com.reggie.employee.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
+import com.reggie.common.exception.BusinessException;
+import com.reggie.common.exception.UserExceptionEnum;
 import com.reggie.employee.dao.EmployeeDao;
 import com.reggie.employee.domain.dto.EmployeeLoginDto;
 import com.reggie.employee.domain.entity.Employee;
@@ -19,14 +21,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public SaResult login(EmployeeLoginDto employeeLoginDto) {
         Employee user = employeeDao.lambdaQuery().eq(Employee::getUsername, employeeLoginDto.getUsername()).one();
         if (user == null) {
-            return SaResult.error("用户不存在");
+            throw new BusinessException(UserExceptionEnum.USER_IS_NOT_EXIST);
         }
         String password = employeeLoginDto.getPassword();
         password = DigestUtils.md5DigestAsHex(password.getBytes());
-        if(password.equals(user.getPassword())) {
-            StpUtil.login(10001);
-            return SaResult.ok("登录成功");
+        if(!password.equals(user.getPassword())) {
+            throw new BusinessException(UserExceptionEnum.USER_PASSWORD_ERROR);
         }
-        return SaResult.error("登录失败");
+        StpUtil.login(user.getId());
+        return SaResult.ok(StpUtil.getTokenInfo().getTokenValue());
     }
 }
