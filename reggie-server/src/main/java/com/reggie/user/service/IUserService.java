@@ -1,7 +1,6 @@
 package com.reggie.user.service;
 
 import com.reggie.user.domain.entity.User;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

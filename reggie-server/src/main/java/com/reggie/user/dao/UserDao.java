@@ -2,7 +2,6 @@ package com.reggie.user.dao;
 
 import com.reggie.user.domain.entity.User;
 import com.reggie.user.mapper.UserMapper;
-import com.reggie.user.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
