@@ -32,6 +32,7 @@
         <mybatis.version>3.5.10</mybatis.version>
         <mysql-connector.version>8.0.29</mysql-connector.version>
         <hutool.version>5.8.18</hutool.version>
+        <sa-token.version>1.38.0</sa-token.version>
     </properties>
 
     <dependencyManagement>
@@ -65,6 +66,11 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${sa-token.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
