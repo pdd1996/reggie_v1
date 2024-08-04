@@ -35,7 +35,7 @@ public class MPGenerator {
         PackageConfig packageConfig = new PackageConfig();
         // 包路径
         // <------ 配置处2 包路径 ------>
-        packageConfig.setParent("com.reggie.user");
+        packageConfig.setParent("com.reggie.employee");
         packageConfig.setEntity("domain.entity");
         packageConfig.setMapper("mapper");
         packageConfig.setController("controller");
@@ -51,7 +51,7 @@ public class MPGenerator {
 
         // 重点:操作哪些表 可以传多个
         // <------ 配置处3 操作表 ------>
-        strategyConfig.setInclude("user");
+        strategyConfig.setInclude("employee");
 
         // 自动填充
         List<TableFill> list = new ArrayList<TableFill>();
