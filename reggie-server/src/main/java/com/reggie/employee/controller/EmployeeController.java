@@ -2,7 +2,7 @@ package com.reggie.employee.controller;
 
 
 import cn.dev33.satoken.util.SaResult;
-import com.reggie.employee.domain.entity.Employee;
+import com.reggie.employee.domain.dto.EmployeeLoginDto;
 import com.reggie.employee.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +22,8 @@ public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
     @PostMapping("/login")
-    public SaResult login(@RequestBody Employee employee) {
-        System.out.println("login" + employee);
-        return employeeService.login(employee);
+    public SaResult login(@RequestBody EmployeeLoginDto employeeLoginDto) {
+        return employeeService.login(employeeLoginDto);
     }
 }
 

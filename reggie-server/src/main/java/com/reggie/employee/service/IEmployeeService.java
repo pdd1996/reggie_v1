@@ -1,7 +1,7 @@
 package com.reggie.employee.service;
 
 import cn.dev33.satoken.util.SaResult;
-import com.reggie.employee.domain.entity.Employee;
+import com.reggie.employee.domain.dto.EmployeeLoginDto;
 
 /**
  * <p>
@@ -12,5 +12,5 @@ import com.reggie.employee.domain.entity.Employee;
  * @since 2024-08-04
  */
 public interface IEmployeeService {
-    SaResult login(Employee employee);
+    SaResult login(EmployeeLoginDto employeeLoginDto);
 }
