@@ -12,5 +12,9 @@ import com.reggie.employee.domain.dto.EmployeeLoginDto;
  * @since 2024-08-04
  */
 public interface IEmployeeService {
+
     SaResult login(EmployeeLoginDto employeeLoginDto);
+
+    SaResult logout();
+
 }

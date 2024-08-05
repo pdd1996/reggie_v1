@@ -24,5 +24,10 @@ public class EmployeeController {
     public SaResult login(@RequestBody EmployeeLoginDto employeeLoginDto) {
         return employeeService.login(employeeLoginDto);
     }
+
+    @PostMapping("/logout")
+    public SaResult logout() {
+        return employeeService.logout();
+    }
 }
 

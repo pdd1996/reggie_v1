@@ -39,4 +39,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         result.put("name", user.getName());
         return SaResult.data(result);
     }
+
+    @Override
+    public SaResult logout() {
+        StpUtil.logout();
+        return SaResult.ok();
+    }
 }
