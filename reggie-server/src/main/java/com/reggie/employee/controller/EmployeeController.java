@@ -1,5 +1,6 @@
 package com.reggie.employee.controller;
 
+import cn.dev33.satoken.util.SaResult;
 import com.reggie.common.domain.resp.ApiResult;
 import com.reggie.employee.domain.dto.EmployeeLoginDto;
 import com.reggie.employee.service.IEmployeeService;
@@ -21,9 +22,9 @@ public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
     @PostMapping("/login")
-    public ApiResult<Void> login(@RequestBody EmployeeLoginDto employeeLoginDto) {
+    public SaResult login(@RequestBody EmployeeLoginDto employeeLoginDto) {
         employeeService.login(employeeLoginDto);
-        return ApiResult.success();
+        return SaResult.ok();
     }
 }
 
