@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
@@ -29,6 +32,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
             throw new BusinessException(UserExceptionEnum.USER_PASSWORD_ERROR);
         }
         StpUtil.login(user.getId());
-        return SaResult.ok(StpUtil.getTokenInfo().getTokenValue());
+        String token = StpUtil.getTokenInfo().getTokenValue();
+        Map<String, String> result = new HashMap<>();
+        result.put("token", token);
+        result.put("username", user.getUsername());
+        result.put("name", user.getName());
+        return SaResult.data(result);
     }
 }
