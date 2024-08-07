@@ -156,13 +156,15 @@
           submitForm (formName, st) {
             this.$refs[formName].validate((valid) => {
               if (valid) {
+                console.log('submit!' + localStorage.getItem('userInfo'))
                 if (this.actionType === 'add') {
                   const params = {
                     ...this.ruleForm,
-                    sex: this.ruleForm.sex === '女' ? '0' : '1'
+                    sex: this.ruleForm.sex === '女' ? '0' : '1',
+                    id:JSON.parse(localStorage.getItem('userInfo')).id
                   }
                   addEmployee(params).then(res => {
-                    if (res.code === 1) {
+                    if (res.code === 200) {
                       this.$message.success('员工添加成功！')
                       if (!st) {
                         this.goBack()

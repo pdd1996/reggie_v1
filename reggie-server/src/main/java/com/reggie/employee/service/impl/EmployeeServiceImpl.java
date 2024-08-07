@@ -3,6 +3,7 @@ package com.reggie.employee.service.impl;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.reggie.common.domain.resp.ApiResult;
 import com.reggie.common.domain.resp.PageResponse;
 import com.reggie.common.exception.BusinessException;
 import com.reggie.common.exception.UserExceptionEnum;
@@ -16,10 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -43,6 +41,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         result.put("token", token);
         result.put("username", user.getUsername());
         result.put("name", user.getName());
+        result.put("id", user.getId().toString());
         return SaResult.data(result);
     }
 
@@ -53,9 +52,21 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public String save(InsertEmployeeDto insertEmployeeDto) {
-
-        return "";
+    public ApiResult<Employee> save(InsertEmployeeDto insertEmployeeDto) {
+        Employee employee = new Employee();
+        employee.setUsername(insertEmployeeDto.getUsername());
+        employee.setName(insertEmployeeDto.getName());
+        employee.setPhone(insertEmployeeDto.getPhone());
+        employee.setIdNumber(insertEmployeeDto.getIdNumber());
+        employee.setStatus(insertEmployeeDto.getStatus());
+        employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
+        employee.setCreateUser(insertEmployeeDto.getId());
+        employee.setUpdateUser(insertEmployeeDto.getId());
+        employee.setSex(insertEmployeeDto.getSex());
+        employee.setCreateTime(new Date());
+        employee.setUpdateTime(new Date());
+        employeeDao.save(employee);
+        return ApiResult.success(employee);
     }
 
     @Override

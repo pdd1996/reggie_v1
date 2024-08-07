@@ -1,10 +1,12 @@
 package com.reggie.employee.service;
 
 import cn.dev33.satoken.util.SaResult;
+import com.reggie.common.domain.resp.ApiResult;
 import com.reggie.common.domain.resp.PageResponse;
 import com.reggie.employee.domain.dto.EmployeeDto;
 import com.reggie.employee.domain.dto.EmployeeLoginDto;
 import com.reggie.employee.domain.dto.InsertEmployeeDto;
+import com.reggie.employee.domain.entity.Employee;
 
 /**
  * <p>
@@ -20,7 +22,7 @@ public interface IEmployeeService {
 
     SaResult logout();
 
-    String save(InsertEmployeeDto insertEmployeeDto);
+    ApiResult<Employee> save(InsertEmployeeDto insertEmployeeDto);
 
     PageResponse<EmployeeDto> getEmployeeList(Integer page, Integer pageSize);
 }

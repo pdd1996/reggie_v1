@@ -6,6 +6,7 @@ import com.reggie.common.domain.resp.PageResponse;
 import com.reggie.employee.domain.dto.EmployeeDto;
 import com.reggie.employee.domain.dto.EmployeeLoginDto;
 import com.reggie.employee.domain.dto.InsertEmployeeDto;
+import com.reggie.employee.domain.entity.Employee;
 import com.reggie.employee.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +40,8 @@ public class EmployeeController {
         return ApiResult.success(employeeList);
     }
 
-    @PostMapping("/save")
-    public String save(@RequestBody InsertEmployeeDto insertEmployeeDto) {
+    @PostMapping
+    public ApiResult<Employee> save(@RequestBody InsertEmployeeDto insertEmployeeDto) {
         return employeeService.save(insertEmployeeDto);
     }
 }
