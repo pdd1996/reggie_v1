@@ -142,7 +142,7 @@
               name: this.input ? this.input : undefined
             }
             await getMemberList(params).then(res => {
-              if (String(res.code) === '1') {
+              if (String(res.code) === '200') {
                 this.tableData = res.data.records || []
                 this.counts = res.data.total
               }
