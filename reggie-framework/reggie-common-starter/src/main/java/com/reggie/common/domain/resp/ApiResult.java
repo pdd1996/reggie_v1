@@ -15,6 +15,7 @@ public class ApiResult<T> {
 
     public static <T> ApiResult<T> success() {
         ApiResult<T> result = new ApiResult<>();
+        result.setCode(200);
         result.setData(null);
         result.setSuccess(Boolean.TRUE);
         return result;
@@ -22,6 +23,7 @@ public class ApiResult<T> {
 
     public static <T> ApiResult<T> success(T data) {
         ApiResult<T> result = new ApiResult<>();
+        result.setCode(200);
         result.setData(data);
         result.setSuccess(Boolean.TRUE);
         return result;
